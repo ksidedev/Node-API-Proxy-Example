@@ -6,9 +6,10 @@ const proxy = httpProxy.createProxyServer()
 const server = http
   .createServer((req, res) => {
     proxy.web(req, res, {
-      target: /^\/(journeylogs)/.test(req.url)
-        ? 'given_API_End_Point domain before the /'
-        : 'http://localhost:3000',
+      target: 'http://laptop.local:3000/', // URL
+      // target: /^\/(journeylogs)/.test(req.url)
+      //   ? 'given_API_End_Point domain before the /'
+      //   : 'http://localhost:3000',
       changeOrigin: true
     })
 
@@ -16,7 +17,7 @@ const server = http
       console.log(e)
     })
   })
-  .listen(8080)
+  .listen(3003) // endpoint to point to
 
 server.on('upgrade', function (req, socket, head) {
   proxy.ws(req, socket, head);
