@@ -7,9 +7,9 @@ const server = http
   .createServer((req, res) => {
     proxy.web(req, res, {
       target: 'http://laptop.local:3000/', // URL
-      // target: /^\/(journeylogs)/.test(req.url)
-      //   ? 'given_API_End_Point domain before the /'
-      //   : 'http://localhost:3000',
+      /* target: /^\/(path)/.test(req.url)
+         ? 'given_API_End_Point domain before the /'
+         : 'http://localhost:3000', */
       changeOrigin: true
     })
 
